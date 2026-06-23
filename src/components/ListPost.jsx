@@ -44,20 +44,30 @@ const ListPost = () => {
   }
 
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
       {posts.map((post) => {
         return (
-          <div key={post.id}>
-            <h1>{post.title}</h1>
-            <p>{post.content}</p>
-            <p>{post.author}</p>
-
+          <div
+            key={post.id}
+            className="bg-white shadow-lg rounded-xl p-5 border hover:shadow-xl transition"
+          >
             <div>
-              <Link to={`/edit/${post.id}`}>Edit</Link>
+              <h1 className="text-xl font-bold mb-2">{post.title}</h1>
+              <p className="text-gray-600 mb-3">{post.content}</p>
+              <p className="text-sm text-gray-500">Author: {post.author}</p>
+            </div>
+
+            <div className="flex gap-3 mt-4">
+              <Link
+                to={`/edit/${post.id}`}
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              >
+                Edit
+              </Link>
+
               <button
-                onClick={() => {
-                  handleDelete(post.id);
-                }}
+                onClick={() => handleDelete(post.id)}
+                className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
               >
                 Delete
               </button>

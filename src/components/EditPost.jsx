@@ -51,48 +51,64 @@ const EditPost = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Edit Post</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md"
+      >
+        <h1 className="text-2xl font-bold mb-6 text-center">Edit Post</h1>
 
-        {error && <p>{error}</p>}
+        {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
 
-        <div>
-          <label>Title</label>
+        <div className="mb-4">
+          <label className="block mb-2 font-medium">Title</label>
           <input
             type="text"
             name="title"
             value={post.title}
             onChange={handleChange}
+            className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
-        <div>
-          <label>Content</label>
+        <div className="mb-4">
+          <label className="block mb-2 font-medium">Content</label>
           <textarea
             name="content"
             value={post.content}
             onChange={handleChange}
+            rows="4"
+            className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
-        <div>
-          <label>Author</label>
+        <div className="mb-6">
+          <label className="block mb-2 font-medium">Author</label>
           <input
             type="text"
             name="author"
             value={post.author}
             onChange={handleChange}
+            className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
-        <button type="submit">
-          {submitting ? "Updating..." : "Update post"}
-        </button>
+        <div className="flex gap-3">
+          <button
+            type="submit"
+            className="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
+          >
+            {submitting ? "Updating..." : "Update Post"}
+          </button>
 
-        <button type="button" onClick={() => navigate("/")}>
-          Cancel
-        </button>
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="flex-1 bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600"
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );
